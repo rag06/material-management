@@ -1,0 +1,10 @@
+DELIMITER $$
+CREATE TRIGGER update_item_quantity AFTER INSERT ON items_transaction 
+FOR EACH ROW BEGIN 
+IF NEW.transaction_Type = 0 THEN
+UPDATE items SET Items_Qty=(Items_Qty-NEW.transaction_Qty) WHERE Items_Id=NEW.transaction_Item; 
+ELSE UPDATE items SET Items_Qty=(Items_Qty+NEW.transaction_Qty) WHERE Items_Id=NEW.transaction_Item;
+END IF;
+END$$
+
+DELIMITER ;

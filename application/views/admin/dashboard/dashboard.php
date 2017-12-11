@@ -25,7 +25,7 @@
 				  <!-- small box -->
 				  <div class="small-box bg-aqua">
 					<div class="inner">
-					  <h3><?php echo $currentDay ?  $currentDay[0]['TotalSales'] : 0; ?></h3>
+					  <h3>0</h3>
 
 					  <p>Today Sales</p>
 					</div>
@@ -40,15 +40,7 @@
 				  <!-- small box -->
 				  <div class="small-box bg-green">
 					<div class="inner">
-					  <h3><?php 
-					  $now = new \DateTime('now');
-					   $month = $now->format('m');
-					   $year = $now->format('Y');
-					  foreach($sales as $sale){
-								if($sale['SalesMonth'] == $month  && $sale['SalesYear']== $year ){
-									echo $sale['TotalSales']?  $sale['TotalSales'] :'0';
-								}
-					  } ?></h3>
+					  <h3>0</h3>
 
 					  <p>This Month Sale</p>
 					</div>
@@ -63,7 +55,7 @@
 				  <!-- small box -->
 				  <div class="small-box bg-yellow">
 					<div class="inner">
-					  <h3><?php echo $adminusers[0]['VAL'] ? $adminusers[0]['VAL'] :'0'; ?></h3>
+					  <h3>0</h3>
 
 					  <p>Admin User</p>
 					</div>
@@ -78,7 +70,7 @@
 				  <!-- small box -->
 				  <div class="small-box bg-red">
 					<div class="inner">
-					  <h3><?php echo $routecount[0]['VAL']? $routecount[0]['VAL'] :'0'; ?></h3>
+					  <h3>0</h3>
 
 					  <p>Total Routes</p>
 					</div>
@@ -91,218 +83,7 @@
 				<!-- ./col -->
 			  </div>
 			  <!-- /.row -->
-			  <div class="row">
-				<div class="col-lg-4 col-md-4">
-				<!-- DONUT CHART -->
-				  <div class="box box-primary">
-					<div class="box-header with-border">
-					  <h3 class="box-title">Employees </h3>
-
-					  <div class="box-tools pull-right">
-						<button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-						</button>
-						<button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-					  </div>
-					</div>
-					<div class="box-body">
-					  <canvas id="pieChart" style="height:250px"></canvas>
-					</div>
-					<!-- /.box-body -->
-				  </div>
-				  <!-- /.box -->
-				</div>
-				<div class="col-lg-4 col-md-4">
-				<!-- DONUT CHART -->
-				  <div class="box box-primary">
-					<div class="box-header with-border">
-					  <h3 class="box-title">Todays Slip Record </h3>
-
-					  <div class="box-tools pull-right">
-						<button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-						</button>
-						<button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-					  </div>
-					</div>
-					<div class="box-body">
-					  <canvas id="pieChartSlips" style="height:250px"></canvas>
-					</div>
-					<!-- /.box-body -->
-				  </div>
-				  <!-- /.box -->
-				</div>
-				<div class="col-lg-4 col-md-4">
-				  <!-- PRODUCT LIST -->
-				  <div class="box box-primary">
-					<div class="box-header with-border">
-					  <h3 class="box-title">Sales per Conductor Per Month</h3>
-					  <div class="box-tools pull-right">
-						<button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
-						<button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-					  </div>
-					</div><!-- /.box-header -->
-					<div class="box-body">
-					  <table class="table datatable">
-						<thead>
-							<tr>
-								<th>Conductor</th>
-								<th>Year</th>
-								<th>Month</th>
-								<th>Amount</th>
-							</tr>
-						</thead>
-						<tbody>
-							<?php 
-								$i=0;
-								foreach($conductor as $cond){
-									$i++;
-									if($i == 3)
-										break;
-									echo '<tr>
-											<td>'.$empData[$cond['cashDeposit_slip_ConductorEmpId']]->Employee_Number.'</td>
-											<td>'.$cond['SalesYear'].'</td>
-											<td>'.$cond['SalesMonth'].'</td>
-											<td> Rs. '.$cond['TotalSales'].'</td>
-										</tr>';
-								}
-								?>
-						</tbody>
-					  </table>
-					</div><!-- /.box-body -->
-					<div class="box-footer text-center">
-					  <a href="<?php echo base_url();?>admin/dashboard/dashboard/downloadSalesPerConductorPerMonthPerYear" class="uppercase">View All</a>
-					</div><!-- /.box-footer -->
-				  </div><!-- /.box -->
-				</div>
-			  </div>
-			  <div class="row">
-				<div class="col-lg-4 col-md-4">
-				  <!-- PRODUCT LIST -->
-				  <div class="box box-primary">
-					<div class="box-header with-border">
-					  <h3 class="box-title">Sales per Year Per Month</h3>
-					  <div class="box-tools pull-right">
-						<button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
-						<button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-					  </div>
-					</div><!-- /.box-header -->
-					<div class="box-body">
-					  <table class="table datatable">
-						<thead>
-							<tr>
-								<th>Year</th>
-								<th>Month</th>
-								<th>Amount</th>
-							</tr>
-						</thead>
-						<tbody>
-							<?php 
-								$i=0;
-								foreach($sales as $sale){
-									$i++;
-									if($i == 3)
-										break;
-									echo '<tr>
-											<td>'.$sale['SalesYear'].'</td>
-											<td>'.$sale['SalesMonth'].'</td>
-											<td> Rs. '.$sale['TotalSales'].'</td>
-										</tr>';
-								}
-								?>
-						</tbody>
-					  </table>
-					</div><!-- /.box-body -->
-					<div class="box-footer text-center">
-					  <a href="<?php echo base_url();?>admin/dashboard/dashboard/downloadSalesPerMonthPerYear" class="uppercase">View All</a>
-					</div><!-- /.box-footer -->
-				  </div><!-- /.box -->
-				</div>
-				<div class="col-lg-4 col-md-4">
-				  <!-- PRODUCT LIST -->
-				  <div class="box box-primary">
-					<div class="box-header with-border">
-					  <h3 class="box-title">Sales per Ticket per Year Per Month</h3>
-					  <div class="box-tools pull-right">
-						<button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
-						<button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-					  </div>
-					</div><!-- /.box-header -->
-					<div class="box-body">
-					  <table class="table datatable">
-						<thead>
-							<tr>
-								<th>Ticket</th>
-								<th>Year</th>
-								<th>Month</th>
-								<th>Amount</th>
-							</tr>
-						</thead>
-						<tbody>
-							<?php 
-								$i=0;
-								foreach($tickets as $ticket){
-									$i++;
-									if($i == 3)
-										break;
-									echo '<tr>
-											<td>'.$ticketsData[$ticket['cashDeposit_slip_details_TicketId']]->tickets_Price.'</td>
-											<td>'.$ticket['SalesYear'].'</td>
-											<td>'.$ticket['SalesMonth'].'</td>
-											<td> Rs. '.$ticket['TotalSales'].'</td>
-										</tr>';
-								}
-								?>
-						</tbody>
-					  </table>
-					</div><!-- /.box-body -->
-					<div class="box-footer text-center">
-					  <a href="<?php echo base_url();?>admin/dashboard/dashboard/downloadSalesPerTicketPerMonthPerYear" class="uppercase">View All</a>
-					</div><!-- /.box-footer -->
-				  </div><!-- /.box -->
-				</div>
-				<div class="col-lg-4 col-md-4">
-				  <!-- PRODUCT LIST -->
-				  <div class="box box-primary">
-					<div class="box-header with-border">
-					  <h3 class="box-title">Sales per Duty per Year Per Month</h3>
-					  <div class="box-tools pull-right">
-						<button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
-						<button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-					  </div>
-					</div><!-- /.box-header -->
-					<div class="box-body">
-					  <table class="table datatable">
-						<thead>
-							<tr>
-								<th>Duty</th>
-								<th>Year</th>
-								<th>Month</th>
-								<th>Amount</th>
-							</tr>
-						</thead>
-						<tbody>
-							<?php 
-								$i=0;
-								foreach($duty as $dutyRow){
-									$i++;
-									if($i == 3)
-										break;
-									echo '<tr>
-											<td>'.$dutyData[$dutyRow['cashDeposit_slip_DutyId']]->Bus_Routes_Number.' | '.$dutyData[$dutyRow['cashDeposit_slip_DutyId']]->bus_duty_Id.'</td>
-											<td>'.$dutyRow['SalesYear'].'</td>
-											<td>'.$dutyRow['SalesMonth'].'</td>
-											<td> Rs. '.$dutyRow['TotalSales'].'</td>
-										</tr>';
-								}
-								?>
-						</tbody>
-					  </table>
-					</div><!-- /.box-body -->
-					<div class="box-footer text-center">
-					  <a href="<?php echo base_url();?>admin/dashboard/dashboard/downloadSalesPerDutyPerMonthPerYear" class="uppercase">View All</a>
-					</div><!-- /.box-footer -->
-				  </div><!-- /.box -->
-				</div>
-			  </div>
+			  
           <!-- Your Page Content Here -->
 
         </section><!-- /.content -->
