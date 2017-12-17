@@ -9,9 +9,9 @@
 			<li class="treeview">
               <a href="#"><i class="fa fa-link"></i> <span>Items Mangement</span> <i class="fa fa-angle-left pull-right"></i></a>
               <ul class="treeview-menu">
-                <li><a href="<?php echo base_url()?>admin/manage/Items/addItems">Add a Item</a></li>
-                <li><a href="<?php echo base_url()?>admin/manage/Items/index">Manage Items</a></li>
-                <li><a href="<?php echo base_url()?>admin/manage/Items/reports">Reports Items</a></li>
+                <li><a href="<?php echo base_url()?>admin/items/items/addItems">Add a Item</a></li>
+                <li><a href="<?php echo base_url()?>admin/items/items/index">Manage Items</a></li>
+                <li><a href="<?php echo base_url()?>admin/items/items/reports">Reports Items</a></li>
               </ul>
             </li>
 			<li class="treeview">
@@ -23,6 +23,7 @@
               </ul>
             </li>
 			<?php if($this->session->userdata['logged_in']['role']==1) {?>
+            <li><a href="<?php echo base_url() ;?>admin/bus/bus"><i class="fa fa-link"></i> <span>Bus List</span></a></li>
 			<li class="treeview">
 			  <a href="#"><i class="fa fa-link"></i> <span>Admin User Management</span> <i class="fa fa-angle-left pull-right"></i></a>
 			  <ul class="treeview-menu">
