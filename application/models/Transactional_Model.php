@@ -25,7 +25,27 @@ Class Transactional_Model extends CI_Model {
 		return $data;
 		
 	}
-	
+	public function listTranactionsReports($itemId='',$busNumber='',$startDate,$endDate) {
+		
+		$this->db->select('*');
+		$this->db->from('items_transaction');
+		$this->db->join('items','items.Items_Id = items_transaction.transaction_Item');
+		$where = "";
+		$where .= "	transaction_CreatedOn BETWEEN '".$startDate."' AND '".$endDate."'";
+		if(!empty($itemId))
+			$where .= " AND transaction_Item=".$itemId;
+		if(!empty($busNumber))
+			$where .= " AND 	transaction_Bus='".$busNumber."'";
+			
+		$this->db->where($where);
+		$this->db->order_by('transaction_CreatedOn','desc');
+		$query = $this->db->get();
+		$data=array();
+		$data['result']=$query->result();
+		$data['records']=$query->num_rows();
+		return $data;
+		
+	}
 	public function deleteTransaction($id) {
 		
 		$this->db->where('transaction_Id', $id);
