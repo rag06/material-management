@@ -9,12 +9,12 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
           <h1>
-            Items List
-            <small>Manage Your Items</small>
+            Item Transaction List
+            <small>Manage Your Item Transaction</small>
           </h1>
           <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-            <li class="active"><a href="#">Items List</a></li>
+            <li class="active"><a href="#">Item Transaction List</a></li>
           </ol>
         </section>
 
@@ -22,14 +22,14 @@
         <section class="content">
 				 <div class="box box-primary">
 						<div class="box-header with-border">
-						  <h3 class="box-title">Items Reports</h3>
+						  <h3 class="box-title">Item Transaction Reports</h3>
 						</div><!-- /.box-header -->
 						  <div class="box-body">
 								<form class="form" method="post" action="<?php echo base_url();?>admin/transaction/transaction/downloadTransactionReport" >
 								<div class="row">
 								<div class="col-md-5">
 									<div class="form-group">
-									  <label for="item">Items</label>
+									  <label for="item">Item Transaction</label>
 											<select  class="form-control select2" id="item" name="item">
 												<option value=""> Select a Item</option>
 												  <?php 
